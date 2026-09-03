@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Temario Interactivo · Top Mentor 2.0 · SISE</title>
+<meta name="description" content="Temario interactivo del programa de capacitación docente Top Mentor 2.0 del Instituto SISE.">
+<style>
+:root {
+  --sise-dark:#241F21;
+  --sise-dark-2:#302A2D;
+  --sise-pink:#FF0E49;
+  --sise-pink-dark:#D60B3C;
+  --sise-soft:#FFF0F4;
+  --paper:#F7F5F6;
+  --white:#FFFFFF;
+  --text:#241F21;
+  --muted:#6F686C;
+  --line:#E7E2E4;
+  --green:#1F8A4D;
+  --green-bg:#F0FAF3;
+  --shadow:0 14px 34px rgba(36,31,33,.08);
+  --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--text);line-height:1.5}
+button{font:inherit}
+a{color:inherit}
+.hero{min-height:760px;background:var(--sise-dark);color:#fff;position:relative;overflow:hidden;padding:42px 0 64px}
+.hero::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-190px;top:255px;background:var(--sise-dark-2)}
+.hero::before{content:"»";position:absolute;right:67px;top:342px;font-size:178px;line-height:1;color:var(--sise-pink);font-weight:900;z-index:1;letter-spacing:-34px;opacity:.98}
+.shell{width:min(1020px,calc(100% - 40px));margin:0 auto;position:relative;z-index:2}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:inline-flex;align-items:center}
+.brand img{display:block;width:145px;height:auto;filter:none}
+.virtual-pill{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 16px;font-size:12px;font-weight:700;letter-spacing:.06em;background:rgba(255,255,255,.03)}
+.hero-copy{max-width:690px;margin-top:142px}
+.kicker{display:block;color:var(--sise-pink);font-size:13px;font-weight:800;letter-spacing:.08em;margin-bottom:12px}
+.hero h1{font-size:clamp(42px,7vw,70px);line-height:.98;margin:0;letter-spacing:-.035em}
+.hero h1 span{color:var(--sise-pink)}
+.hero h3{margin:14px 0 0;font-size:clamp(24px,3vw,34px)}
+.hero p{max-width:620px;color:#D9D3D6;font-size:17px;margin:26px 0 0}
+.hero-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:34px}
+.primary-btn,.ghost-btn{border:0;border-radius:14px;padding:15px 20px;font-weight:800;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:.2s transform,.2s background}
+.primary-btn{background:var(--sise-pink);color:#fff}
+.primary-btn:hover{transform:translateY(-2px);background:#ef0b43}
+.ghost-btn{background:var(--sise-dark-2);color:#fff;border:1px solid rgba(255,255,255,.12)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:42px;max-width:720px}
+.stat{border:1px solid rgba(255,255,255,.12);background:var(--sise-dark-2);border-radius:16px;padding:18px;min-height:94px}
+.stat::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--sise-pink);margin-right:8px}
+.stat strong{font-size:14px}
+.stat span{display:block;color:#BEB5B9;font-size:12px;margin:7px 0 0 17px}
+main{padding:74px 0 100px}
+.intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;margin-bottom:66px}
+.intro-card,.method-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow)}
+.eyebrow{color:var(--sise-pink);font-weight:800;font-size:12px;letter-spacing:.08em}
+.intro-card h2,.method-card h2,.module-heading h2{font-size:clamp(28px,4vw,40px);line-height:1.08;margin:8px 0 16px;letter-spacing:-.025em}
+.intro-card p{font-size:17px;color:#494245;margin:0}
+.method-list{display:grid;gap:15px;margin-top:22px}
+.method-row{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start}
+.method-row i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--sise-soft);color:var(--sise-pink);font-style:normal;font-weight:900;font-size:12px;margin-top:1px}
+.method-row strong{font-size:14px}
+.method-row span{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.temario-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:28px}
+.temario-head h2{font-size:clamp(34px,5vw,54px);line-height:1;margin:8px 0 0;letter-spacing:-.04em}
+.temario-controls{display:flex;gap:10px;flex-wrap:wrap}
+.control-btn{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:12px;padding:11px 14px;font-weight:700;font-size:13px;cursor:pointer}
+.control-btn:hover{border-color:#CFC6CA;background:#FCFAFB}
+.module-block{margin-top:46px;scroll-margin-top:24px}
+.module-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:18px}
+.module-heading h2{font-size:clamp(26px,4vw,38px);margin:6px 0 0}
+.module-range{background:var(--sise-soft);color:var(--sise-pink-dark);font-size:12px;font-weight:800;border-radius:999px;padding:9px 13px;white-space:nowrap}
+.accordion-list{display:grid;gap:12px}
+.accordion-item{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 7px 20px rgba(36,31,33,.045);transition:.2s border-color,.2s box-shadow}
+.accordion-item.open{border-color:#F3A9BC;box-shadow:0 15px 36px rgba(255,14,73,.09)}
+.accordion-trigger{width:100%;border:0;background:#fff;display:grid;grid-template-columns:90px minmax(0,1fr) 42px;gap:18px;align-items:center;text-align:left;padding:22px 24px;cursor:pointer;color:var(--text)}
+.accordion-trigger:hover{background:#FFFDFE}
+.session-badge{background:var(--sise-soft);color:var(--sise-pink-dark);font-weight:800;font-size:11px;border-radius:999px;padding:8px 10px;text-align:center}
+.trigger-copy strong{display:block;font-size:18px;line-height:1.25}
+.trigger-copy small{display:block;color:var(--muted);font-size:13px;margin-top:5px;font-weight:400}
+.chevron{width:34px;height:34px;border-radius:50%;background:var(--sise-soft);position:relative;justify-self:end}
+.chevron::before,.chevron::after{content:"";position:absolute;top:16px;width:9px;height:2px;background:var(--sise-pink);transition:.22s transform}
+.chevron::before{left:9px;transform:rotate(45deg)}
+.chevron::after{right:9px;transform:rotate(-45deg)}
+.accordion-item.open .chevron::before{transform:rotate(-45deg)}
+.accordion-item.open .chevron::after{transform:rotate(45deg)}
+.accordion-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .34s ease}
+.accordion-item.open .accordion-panel{grid-template-rows:1fr}
+.panel-inner{overflow:hidden;min-height:0}
+.panel-inner::before{content:"";display:block;height:1px;background:var(--line);margin:0 24px}
+.panel-inner{padding:0 24px}
+.accordion-item.open .panel-inner{padding-bottom:24px}
+.detail-block{padding-top:24px}
+.detail-label{display:block;color:var(--sise-pink);font-size:11px;font-weight:900;letter-spacing:.08em;margin-bottom:8px}
+.detail-block p{font-size:15px;margin:0;color:#393235}
+ul{margin:9px 0 0;padding-left:20px}
+li{padding-left:4px;margin:7px 0}
+li::marker{color:var(--sise-pink)}
+.result-card{margin-top:24px;display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:center;padding:18px;border-radius:14px;background:var(--green-bg);border:1px solid #CDE9D5}
+.result-icon{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#fff;font-weight:900}
+.result-card span:not(.result-icon){display:block;color:var(--green);font-size:11px;font-weight:900;letter-spacing:.08em}
+.result-card strong{display:block;font-size:14px;margin-top:2px}
+footer{background:var(--sise-dark);color:#fff;padding:34px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.footer-logo img{width:102px;height:auto;display:block}
+footer p{margin:0;color:#AFA6AA;font-size:12px;text-align:right}
+.to-top{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border:0;border-radius:50%;background:var(--sise-pink);color:#fff;cursor:pointer;font-weight:900;font-size:18px;box-shadow:0 10px 24px rgba(255,14,73,.28);opacity:0;pointer-events:none;transform:translateY(10px);transition:.2s}
+.to-top.show{opacity:1;pointer-events:auto;transform:none}
+@media (max-width:760px){
+  .hero{min-height:auto;padding-bottom:56px}
+  .hero::before{font-size:120px;right:30px;top:305px;opacity:.35}
+  .hero::after{right:-250px;top:210px}
+  .brand img{width:118px}
+  .virtual-pill{font-size:10px;padding:8px 11px}
+  .hero-copy{margin-top:105px}
+  .hero-stats{grid-template-columns:1fr}
+  .intro-grid{grid-template-columns:1fr}
+  .temario-head,.module-heading{align-items:flex-start;flex-direction:column}
+  .accordion-trigger{grid-template-columns:76px minmax(0,1fr) 34px;gap:12px;padding:18px 16px}
+  .trigger-copy strong{font-size:16px}
+  .trigger-copy small{font-size:12px}
+  .session-badge{font-size:10px;padding:7px 7px}
+  .panel-inner{padding-left:16px;padding-right:16px}
+  .panel-inner::before{margin:0}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  footer p{text-align:left}
+}
+@media (max-width:460px){
+  .shell{width:min(100% - 26px,1020px)}
+  .hero h1{font-size:46px}
+  .accordion-trigger{grid-template-columns:1fr 34px}
+  .session-badge{grid-column:1;justify-self:start}
+  .trigger-copy{grid-column:1}
+  .chevron{grid-column:2;grid-row:1 / span 2;align-self:center}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero" id="inicio">
+  <div class="shell">
+    <div class="topbar">
+      <a class="brand" href="#inicio" aria-label="SISE"><img src="data:image/png;base64,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" alt="SISE"></a>
+      <span class="virtual-pill">100% VIRTUAL</span>
+    </div>
+    <div class="hero-copy">
+      <span class="kicker">PROGRAMA DE CAPACITACIÓN DOCENTE</span>
+      <h1>TEMARIO <span>INTERACTIVO</span></h1>
+      <h3>TOP MENTOR 2.0</h3>
+      <p>Fortaleciendo las competencias de mentoría, acompañamiento estratégico y metodologías de emprendimiento para la plana docente del Instituto SISE.</p>
+      <div class="hero-actions">
+        <a class="primary-btn" href="#temario">Explorar temario <span>↓</span></a>
+        <a class="ghost-btn" href="#proposito">Ver propósito</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>6 SESIONES ESPECIALIZADAS</strong><span>Estructura intensiva</span></div>
+        <div class="stat"><strong>MODALIDAD 100% VIRTUAL</strong><span>Clases sincrónicas en vivo</span></div>
+        <div class="stat"><strong>ÁREA ORGANIZADORA</strong><span>Emprendimiento SISE</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="shell">
+    <section class="intro-grid" id="proposito">
+      <article class="intro-card">
+        <span class="eyebrow">PROPÓSITO DEL PROGRAMA</span>
+        <h2>De docente a mentor de alto impacto</h2>
+        <p>Evoluciona de docente a mentor de alto impacto para potenciar los proyectos de innovación y startups de tus estudiantes.</p>
+      </article>
+      <article class="method-card">
+        <span class="eyebrow">METODOLOGÍA</span>
+        <h2>Acompañamiento aplicado</h2>
+        <div class="method-list">
+          <div class="method-row"><i>✓</i><div><strong>Rol Estratégico</strong><span>Perfecciona tus habilidades de guía en proyectos de emprendimiento e innovación.</span></div></div>
+          <div class="method-row"><i>✓</i><div><strong>Acompañamiento Metodológico</strong><span>Aplica estrategias de comunicación, escucha activa y retroalimentación oportuna.</span></div></div>
+          <div class="method-row"><i>✓</i><div><strong>Sesiones 100% Virtuales</strong><span>Dinámicas interactivas, herramientas digitales de seguimiento y workshops online.</span></div></div>
+          <div class="method-row"><i>✓</i><div><strong>Comunidad de Emprendedores</strong><span>Articulación directa con el Club de Emprendedores del Instituto SISE.</span></div></div>
+        </div>
+      </article>
+    </section>
+
+    <section id="temario">
+      <div class="temario-head">
+        <div>
+          <span class="eyebrow">RUTA FORMATIVA</span>
+          <h2>6 sesiones · 3 módulos</h2>
+        </div>
+        <div class="temario-controls">
+          <button class="control-btn" id="expand-all" type="button">Expandir todo</button>
+          <button class="control-btn" id="collapse-all" type="button">Cerrar todo</button>
+        </div>
+      </div>
+      
+      <section class="module-block" id="modulo-1">
+        <div class="module-heading">
+          <div>
+            <span class="eyebrow">MÓDULO 1</span>
+            <h2>Fundamentos y Comunicación</h2>
+          </div>
+          <span class="module-range">Sesiones 1 y 2</span>
+        </div>
+        <div class="accordion-list">
+          <article class="accordion-item" data-session="1">
+            <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="panel-1" id="trigger-1">
+              <span class="session-badge">SESIÓN 1</span>
+              <span class="trigger-copy">
+                <strong>Introducción y Perfil del Docente Mentor</strong>
+                <small>Rol del mentor, principios de mentoría efectiva e impacto en emprendimiento.</small>
+              </span>
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-panel" id="panel-1" role="region" aria-labelledby="trigger-1">
+              <div class="panel-inner">
+                <div class="detail-block">
+                  <span class="detail-label">OBJETIVO</span>
+                  <p>Introducir el programa Top Mentor y definir los principios clave del rol del mentor en el ecosistema.</p>
+                </div>
+                <div class="detail-block">
+                  <span class="detail-label">CONTENIDOS CLAVE</span>
+                  <ul><li>Rol del mentor en el ecosistema de emprendimiento.</li><li>Principios de la mentoría efectiva y perfil docente.</li><li>Análisis de casos y dinámicas introductorias.</li></ul>
+                </div>
+                <div class="result-card">
+                  <span class="result-icon">✓</span>
+                  <div><span>RESULTADO</span><strong>Claridad sobre el rol del mentor y su aporte estratégico.</strong></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item" data-session="2">
+            <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="panel-2" id="trigger-2">
+              <span class="session-badge">SESIÓN 2</span>
+              <span class="trigger-copy">
+                <strong>Comunicación Efectiva y Acompañamiento</strong>
+                <small>Escucha activa, empatía y formulación de preguntas poderosas al estudiante.</small>
+              </span>
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-panel" id="panel-2" role="region" aria-labelledby="trigger-2">
+              <div class="panel-inner">
+                <div class="detail-block">
+                  <span class="detail-label">OBJETIVO</span>
+                  <p>Fortalecer competencias de comunicación para un acompañamiento empático y claro con el estudiante.</p>
+                </div>
+                <div class="detail-block">
+                  <span class="detail-label">CONTENIDOS CLAVE</span>
+                  <ul><li>Comunicación efectiva en procesos de mentoría.</li><li>Escucha activa y formulación de preguntas poderosas.</li><li>Ejercicios prácticos de interacción mentor-emprendedor.</li></ul>
+                </div>
+                <div class="result-card">
+                  <span class="result-icon">✓</span>
+                  <div><span>RESULTADO</span><strong>Mejora en la capacidad de comunicación y retroalimentación.</strong></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="module-block" id="modulo-2">
+        <div class="module-heading">
+          <div>
+            <span class="eyebrow">MÓDULO 2</span>
+            <h2>Estrategias y Liderazgo</h2>
+          </div>
+          <span class="module-range">Sesiones 3 y 4</span>
+        </div>
+        <div class="accordion-list">
+          <article class="accordion-item" data-session="3">
+            <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="panel-3" id="trigger-3">
+              <span class="session-badge">SESIÓN 3</span>
+              <span class="trigger-copy">
+                <strong>Taller de Estrategias e Intervención Docente</strong>
+                <small>Taller interactivo de metodologías e intervención docente oportuna.</small>
+              </span>
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-panel" id="panel-3" role="region" aria-labelledby="trigger-3">
+              <div class="panel-inner">
+                <div class="detail-block">
+                  <span class="detail-label">OBJETIVO</span>
+                  <p>Brindar metodologías y herramientas para intervenir de manera oportuna en los proyectos estudiantiles.</p>
+                </div>
+                <div class="detail-block">
+                  <span class="detail-label">CONTENIDOS CLAVE</span>
+                  <ul><li>Estrategias avanzadas de intervención en proyectos.</li><li>Acompañamiento ágil para la resolución de dudas.</li><li>Taller interactivo de casos prácticos docentes.</li></ul>
+                </div>
+                <div class="result-card">
+                  <span class="result-icon">✓</span>
+                  <div><span>RESULTADO</span><strong>Criterios metodológicos para guiar la aceleración de proyectos.</strong></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item" data-session="4">
+            <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="panel-4" id="trigger-4">
+              <span class="session-badge">SESIÓN 4</span>
+              <span class="trigger-copy">
+                <strong>Liderazgo y Gestión de la Diversidad</strong>
+                <small>Gestión de equipos multidisciplinarios de estudiantes y toma de decisiones.</small>
+              </span>
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-panel" id="panel-4" role="region" aria-labelledby="trigger-4">
+              <div class="panel-inner">
+                <div class="detail-block">
+                  <span class="detail-label">OBJETIVO</span>
+                  <p>Potenciar el liderazgo docente y gestionar la diversidad en equipos multidisciplinarios de estudiantes.</p>
+                </div>
+                <div class="detail-block">
+                  <span class="detail-label">CONTENIDOS CLAVE</span>
+                  <ul><li>Liderazgo inclusivo en entornos de innovación.</li><li>Gestión de equipos con perfiles y talentos diversos.</li><li>Toma de decisiones y resolución de conflictos.</li></ul>
+                </div>
+                <div class="result-card">
+                  <span class="result-icon">✓</span>
+                  <div><span>RESULTADO</span><strong>Desarrollo de liderazgo adaptativo en la mentoría.</strong></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="module-block" id="modulo-3">
+        <div class="module-heading">
+          <div>
+            <span class="eyebrow">MÓDULO 3</span>
+            <h2>Seguimiento y Speed Mentoring</h2>
+          </div>
+          <span class="module-range">Sesiones 5 y 6</span>
+        </div>
+        <div class="accordion-list">
+          <article class="accordion-item" data-session="5">
+            <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="panel-5" id="trigger-5">
+              <span class="session-badge">SESIÓN 5</span>
+              <span class="trigger-copy">
+                <strong>Herramientas de Seguimiento y Plan de Mentoría</strong>
+                <small>Diseño del plan de mentoría, plantillas digitales e indicadores de avance.</small>
+              </span>
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-panel" id="panel-5" role="region" aria-labelledby="trigger-5">
+              <div class="panel-inner">
+                <div class="detail-block">
+                  <span class="detail-label">OBJETIVO</span>
+                  <p>Implementar planes de mentoría estructurados con indicadores y herramientas ágiles de monitoreo.</p>
+                </div>
+                <div class="detail-block">
+                  <span class="detail-label">CONTENIDOS CLAVE</span>
+                  <ul><li>Diseño del Plan de Mentoría y metas clave.</li><li>Plantillas y herramientas digitales de seguimiento.</li><li>Evaluación continua y feedback orientado a resultados.</li></ul>
+                </div>
+                <div class="result-card">
+                  <span class="result-icon">✓</span>
+                  <div><span>RESULTADO</span><strong>Capacidad para estructurar planes formales de seguimiento.</strong></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item" data-session="6">
+            <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="panel-6" id="trigger-6">
+              <span class="session-badge">SESIÓN 6</span>
+              <span class="trigger-copy">
+                <strong>Encuentro de Speed Mentoring</strong>
+                <small>Encuentro virtual de buenas prácticas, networking e integración docente.</small>
+              </span>
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-panel" id="panel-6" role="region" aria-labelledby="trigger-6">
+              <div class="panel-inner">
+                <div class="detail-block">
+                  <span class="detail-label">OBJETIVO</span>
+                  <p>Intercambiar experiencias, aplicar las buenas prácticas aprendidas e integrarse a la comunidad docente.</p>
+                </div>
+                <div class="detail-block">
+                  <span class="detail-label">CONTENIDOS CLAVE</span>
+                  <ul><li>Workshop práctico de Speed Mentoring virtual.</li><li>Compartir experiencias reales y casos de éxito.</li><li>Cierre del programa formativo e integración de la red.</li></ul>
+                </div>
+                <div class="result-card">
+                  <span class="result-icon">✓</span>
+                  <div><span>RESULTADO</span><strong>Consolidación de la red de mentores del Instituto SISE.</strong></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </div>
+</main>
+<footer>
+  <div class="shell footer-inner">
+    <a class="footer-logo" href="#inicio" aria-label="Volver al inicio"><img src="data:image/png;base64,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" alt="SISE"></a>
+    <p>Programa de Capacitación Docente · Top Mentor 2.0<br>Instituto SISE</p>
+  </div>
+</footer>
+<button class="to-top" id="to-top" type="button" aria-label="Volver arriba">↑</button>
+<script>
+(() => {
+  const items = [...document.querySelectorAll('.accordion-item')];
+  const triggers = [...document.querySelectorAll('.accordion-trigger')];
+  const expandAll = document.getElementById('expand-all');
+  const collapseAll = document.getElementById('collapse-all');
+  const toTop = document.getElementById('to-top');
+
+  function setOpen(item, open) {
+    item.classList.toggle('open', open);
+    const btn = item.querySelector('.accordion-trigger');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  triggers.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.accordion-item');
+      const willOpen = !item.classList.contains('open');
+      items.forEach(other => setOpen(other, false));
+      setOpen(item, willOpen);
+      if (willOpen && window.innerWidth < 700) {
+        setTimeout(() => item.scrollIntoView({behavior:'smooth', block:'start'}), 260);
+      }
+    });
+  });
+
+  expandAll.addEventListener('click', () => items.forEach(item => setOpen(item, true)));
+  collapseAll.addEventListener('click', () => items.forEach(item => setOpen(item, false)));
+
+  window.addEventListener('scroll', () => {
+    toTop.classList.toggle('show', window.scrollY > 500);
+  }, {passive:true});
+  toTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+})();
+</script>
+</body>
+</html>
